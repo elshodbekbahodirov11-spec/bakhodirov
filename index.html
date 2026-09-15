@@ -1,113 +1,244 @@
-```html
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram kanal</title>
+<title>Bakhodirov | Telegram</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background:
+            radial-gradient(circle at top left, #2563eb55, transparent 35%),
+            radial-gradient(circle at bottom right, #7c3aed55, transparent 35%),
+            #070b18;
+        color: white;
+        overflow: hidden;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 430px;
+        padding: 45px 28px;
+        text-align: center;
+
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 30px;
+
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        box-shadow:
+            0 25px 70px rgba(0,0,0,0.5),
+            inset 0 1px rgba(255,255,255,0.12);
+
+        animation: appear 0.8s ease;
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
         }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
+    }
 
+    .logo {
+        width: 105px;
+        height: 105px;
+        margin: 0 auto 25px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        font-size: 48px;
+
+        background: linear-gradient(135deg, #229ED9, #5865f2);
+
+        box-shadow:
+            0 0 35px #229ED988,
+            0 10px 30px rgba(0,0,0,0.4);
+
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        50% {
+            transform: translateY(-7px);
+        }
+    }
+
+    .premium {
+        display: inline-block;
+        padding: 7px 14px;
+        margin-bottom: 14px;
+
+        border-radius: 50px;
+
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.15);
+
+        color: #dbeafe;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 14px;
+
+        background: linear-gradient(
+            90deg,
+            #fff,
+            #8ec5ff,
+            #fff
+        );
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p {
+        color: #b9c2d0;
+        line-height: 1.7;
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .telegram-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        width: 100%;
+        padding: 17px;
+
+        color: white;
+        text-decoration: none;
+
+        border-radius: 16px;
+
+        background: linear-gradient(
+            135deg,
+            #229ED9,
+            #5865f2
+        );
+
+        font-size: 17px;
+        font-weight: bold;
+
+        box-shadow:
+            0 10px 30px #229ED955;
+
+        transition: 0.3s;
+        overflow: hidden;
+    }
+
+    .telegram-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100%;
+
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.3),
+            transparent
+        );
+
+        transform: skewX(-20deg);
+        transition: 0.6s;
+    }
+
+    .telegram-btn:hover::before {
+        left: 130%;
+    }
+
+    .telegram-btn:hover {
+        transform: translateY(-4px);
+        box-shadow:
+            0 15px 40px #229ED977;
+    }
+
+    .telegram-btn:active {
+        transform: scale(0.97);
+    }
+
+    .instagram {
+        margin-top: 25px;
+        color: #8993a5;
+        font-size: 13px;
+    }
+
+    .footer {
+        margin-top: 18px;
+        color: #586174;
+        font-size: 11px;
+    }
+
+    @media (max-width: 400px) {
         .card {
-            width: 90%;
-            max-width: 400px;
-            padding: 40px 25px;
-            text-align: center;
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-        }
-
-        .logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            background: #229ED9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 45px;
+            padding: 35px 22px;
         }
 
         h1 {
-            color: #222;
-            margin-bottom: 12px;
+            font-size: 27px;
         }
+    }
+</style>
+<div class="card">
 
-        p {
-            color: #777;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
+    <div class="logo">✈️</div>
 
-        .telegram-btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            background: #229ED9;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .telegram-btn:hover {
-            background: #168ac0;
-            transform: translateY(-2px);
-        }
-
-        .instagram {
-            margin-top: 20px;
-            color: #999;
-            font-size: 14px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="card">
-
-        <div class="logo">✈️</div>
-
-        <h1>Telegram kanalimiz</h1>
-
-        <p>
-            Yangiliklar, foydali ma'lumotlar va yangi postlarni
-            Telegram kanalimizda kuzatib boring!
-        </p>
-
-        <a
-            href="https://t.me/bakhodirov_o21"
-            class="telegram-btn"
-            target="_blank">
-            📲 Telegram kanalga o'tish
-        </a>
-
-        <div class="instagram">
-            Instagram orqali tashrif buyurdingiz ❤️
-        </div>
-
+    <div class="premium">
+        ✦ PREMIUM CHANNEL
     </div>
 
-</body>
-</html>
-```
+    <h1>Bakhodirov</h1>
+
+    <p>
+        Yangiliklar, foydali ma'lumotlar va
+        eksklyuziv postlarni bizning Telegram
+        kanalimizda kuzatib boring.
+    </p>
+
+    <a
+        href="https://t.me/bakhodirov_o21"
+        class="telegram-btn"
+        target="_blank">
+
+        📲
+        Telegram kanalga o'tish
+
+    </a>
+
+    <div class="instagram">
+        ❤️ Biz bilan birga bo‘ling
+    </div>
+
+    <div class="footer">
+        © 2026 Bakhodirov
+    </div>
+
+</div>
+
  
